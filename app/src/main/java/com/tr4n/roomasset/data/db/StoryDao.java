@@ -7,11 +7,13 @@ import com.tr4n.roomasset.data.model.Story;
 
 import java.util.List;
 
+import io.reactivex.Single;
+
 @Dao
 public interface StoryDao {
     @Query("SELECT * FROM tbl_short_story")
-    List<Story> getStories();
+    Single<List<Story>> getStories();
 
     @Query("SELECT * FROM tbl_short_story WHERE id = :id")
-    Story getStoryById(int id);
+    Single<Story> getStoryById(int id);
 }
